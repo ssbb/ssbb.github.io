@@ -1,0 +1,36 @@
+#+TITLE:       Use float as strings in elm-graphql
+#+AUTHOR:      Sviatoslav Bulbakha
+#+EMAIL:       ssbb@Sviatoslavs-MacBook-Pro.local
+#+DATE:        2017-11-09 Thu
+#+URI:         /blog/%y/%m/%d/use-float-as-strings-in-elm-graphql
+#+KEYWORDS:    elm, graphql
+#+TAGS:        elm, graphql
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+
+Many API's using =String= instead of =Float= to represent decimal numbers ([[https://stackoverflow.com/questions/35709595/why-would-you-use-a-string-in-json-to-represent-a-decimal-number][read this answer at SO]]). Thats how you can decode it with [[http://package.elm-lang.org/packages/jamesmacaulay/elm-graphql/latest][elm-graphql]]:
+
+#+BEGIN_SRC haskell
+type FloatStringType
+    = FloatStringType
+
+floatString : ValueSpec NonNull FloatStringType Float vars
+floatString =
+    J.string
+        |> J.andThen
+            (\val ->
+                case String.toFloat val of
+                    Ok f ->
+                        J.succeed f
+
+                    Err reason ->
+                        J.fail reason
+            )
+        |> customScalar FloatStringType
+#+END_SRC
+
+And then use it like any other type:
+
+#+BEGIN_SRC haskell
+|> with (field "price" [] floatString)
+#+END_SRC
