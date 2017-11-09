@@ -4,8 +4,8 @@
     <title>Sviatoslav Bulbakha</title>
     <link>http://ssbb.me/</link>
     <description>418 I&#39;m a teapot</description>
-    <pubDate>Thu, 09 Nov 2017 06:26:10 MSK</pubDate>
-    <lastBuildDate>Thu, 09 Nov 2017 06:26:10 MSK</lastBuildDate>
+    <pubDate>Thu, 09 Nov 2017 06:43:39 MSK</pubDate>
+    <lastBuildDate>Thu, 09 Nov 2017 06:43:39 MSK</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
@@ -26,6 +26,50 @@ BTW new blog using awesome <a href="https://github.com/kelvinh/org-page">org-pag
 </div>]]></description>
       <pubDate>2017-11-09</pubDate>
       <guid>http://ssbb.me/blog/2017/11/09/another-try-to-blog</guid>
+    </item>
+    <item>
+      <title>Use float as strings in elm-graphql</title>
+      <link>http://ssbb.me/blog/2017/11/09/use-float-as-strings-in-elm-graphql</link>
+      <description><![CDATA[<div>
+<div class="post">
+<h1>Use float as strings in elm-graphql</h1>
+<p>
+Many API's using <code>String</code> instead of <code>Float</code> to represent decimal numbers (<a href="https://stackoverflow.com/questions/35709595/why-would-you-use-a-string-in-json-to-represent-a-decimal-number">read this answer at SO</a>). Thats how you can decode it with <a href="http://package.elm-lang.org/packages/jamesmacaulay/elm-graphql/latest">elm-graphql</a>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell">type FloatStringType
+    = FloatStringType
+
+floatString : ValueSpec NonNull FloatStringType Float vars
+floatString =
+    J.string
+        |&gt; J.andThen
+            (\val -&gt;
+                case String.toFloat val of
+                    Ok f -&gt;
+                        J.succeed f
+
+                    Err reason -&gt;
+                        J.fail reason
+            )
+        |&gt; customScalar FloatStringType
+</pre>
+</div>
+
+<p>
+And then use it like any other type:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-haskell">|&gt; with (field "price" [] floatString)
+</pre>
+</div>
+
+</div>
+</div>]]></description>
+      <pubDate>2017-11-09</pubDate>
+      <guid>http://ssbb.me/blog/2017/11/09/use-float-as-strings-in-elm-graphql</guid>
     </item>
   </channel>
 </rss>
