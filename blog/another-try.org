@@ -1,0 +1,13 @@
+#+TITLE:       Another try to blog
+#+AUTHOR:      Sviatoslav Bulbakha
+#+EMAIL:       ssbb@Sviatoslavs-MacBook-Pro.local
+#+DATE:        2017-11-09 Thu
+#+URI:         /blog/%y/%m/%d/another-try-to-blog
+#+KEYWORDS:    blog
+#+TAGS:        blog
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+
+Just cleaned up everything and want to start blogging from scratch again.
+
+BTW new blog using awesome [[https://github.com/kelvinh/org-page][org-page]].
