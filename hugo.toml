@@ -15,8 +15,8 @@ enableRobotsTXT = true
 #ignoreErrors = ["error-disable-taxonomy"]
 
 [services]
-  [services.disqus]
-    shortname = 'ssbb-me'
+  [services.googleAnalytics]
+    id = 'G-75ENXVSR2F'
 
 [taxonomies]
   project = "projects"
@@ -86,3 +86,4 @@ enableRobotsTXT = true
     name = 'rss'
     url = '/index.xml'
     weight = 5
+
