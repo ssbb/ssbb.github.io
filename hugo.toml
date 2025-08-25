@@ -79,10 +79,6 @@ enableRobotsTXT = true
     url = 'https://github.com/ssbb/ssbb.github.io'
     weight = 3
   [[menus.footer]]
-    name = 'discussions'
-    url = 'https://github.com/ssbb/ssbb.github.io/discussions'
-    weight = 4    
-  [[menus.footer]]
     name = 'rss'
     url = '/index.xml'
     weight = 5
