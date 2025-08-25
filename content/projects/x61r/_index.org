@@ -2,5 +2,3 @@
 #+SUMMARY: An attempt to revive the ThinkPad X61.
 
 In this project, I'm trying to revive an old ThinkPad X61 to make it functional for modern use.
-
-This project is in its early stages.
