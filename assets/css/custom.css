@@ -1,0 +1,8 @@
+:root {
+    --font-main: Iosevka Aile Web, sans-serif;
+    --font-secondary: Iosevka Aile Web, sans-serif;
+}
+
+time, code {
+    font-family: Iosevka Web, monospace;
+}

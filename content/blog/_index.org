@@ -1,0 +1,3 @@
+#+TITLE: Blog
+#+MENUS: main
+#+WEIGHT: 2

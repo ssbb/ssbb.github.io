@@ -1,0 +1,5 @@
+{{ $styles := resources.Get "css/fonts.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}">  
+
+{{ $styles := resources.Get "css/custom.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}">
