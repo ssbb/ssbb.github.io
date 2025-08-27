@@ -3,7 +3,7 @@
 #+WEIGHT: 1
 
 * Hi, I'm Sviatoslav Bulbakha.
-I tweak Emacs, break Linux, design keyboards, and solder tiny things. These days I spend more of my free time with electronics and CAD than with code.
+I tweak Emacs, break Linux, design keyboards, and solder tiny things.
 
 For work, I write software in Elixir - functional programming keeps me sane. I'm also exploring event sourcing and looking forward to using it more.
 

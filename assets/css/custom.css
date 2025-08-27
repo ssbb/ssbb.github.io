@@ -6,3 +6,7 @@
 time, code {
     font-family: Iosevka Web, monospace;
 }
+
+figure {
+    margin-inline: 0;
+}
