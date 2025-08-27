@@ -54,7 +54,7 @@ I'll need to adjust EC firmware to get those status LEDs working. I'm also plann
 *** Display
 Remember how I said there are no modern 4:3 displays? Well, there's actually one exception: iPads. Apple has stuck with 4:3 on iPads since the beginning, making them pretty much the only modern devices with high-resolution 4:3 panels in the size range we need. I've got a 12.9" iPad Pro (3rd gen) myself, and the display quality is absolutely stunning.
 
-[[./ipad.jpg]]
+[[./ipad.png]]
 
 For this project I chose the 3rd/4th gen specifically because schematics are available - no reverse engineering required. They use eDP interface, which is perfect since Framework motherboards use eDP too. The only catch is they don't include an onboard backlight driver, so I'll need to build that myself.
 
