@@ -1,6 +1,7 @@
 #+TITLE: iPad display issue and plans change
 #+DATE: <2025-09-26 Fri>
 #+OPTIONS: toc:nil
+#+PROJECT: x61r
 
 In [[file:../first-attempt-at-ipad-lcd-separation/index.org][previous post]] I mentioned that I ordered a few dead iPad displays to practice LCD separation. I recently received the first one and decided to test it before attempting separation... and it works! It's a completely functional display with just cracked glass. What a find for $9!
 
