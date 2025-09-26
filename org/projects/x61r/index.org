@@ -1,0 +1,5 @@
+#+TITLE: Thinkpad X61 Revival
+
+In this project, I'm trying to revive an old ThinkPad X61 to make it functional for modern use.
+
+#+INCLUDE: "../../blog/posts-by-project.inc.org::*x61r" :lines "2-"

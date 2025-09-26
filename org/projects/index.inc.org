@@ -1,0 +1,5 @@
+Notable projects I've worked on.
+
+* Keyboards
+- [[https://github.com/ssbb/pipra][Pipra]] - 30 key low profile EC (Topre) wireless split keyboard.
+- [[https://github.com/ssbb/tako][Tako]] - 34 key EC (Topre) split keyboard with Sweep layout.

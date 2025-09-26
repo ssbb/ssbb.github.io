@@ -1,0 +1,74 @@
+#+TITLE: First attempt at iPad LCD separation
+#+DATE: <2025-09-10>
+#+PROJECT: x61r
+
+Some time ago I picked up a fully working iPad Pro 12.9 (3rd gen) on eBay for $43. It was iCloud-locked and had a cracked front glass, but that's fine for my use case. For comparison, a new screen assembly costs about $150. It's also handy to have the iPad itself, since I'll need to take some measurements on the backlight.
+
+[[./ebay-listing.png]]
+
+I don't care about the glass, since we'll need to remove it anyway - we want to cut the panel down as much as possible. The display with glass is 278x213 mm, while the bare panel is 269x204 mm.
+
+An iPad display (like most tablet displays) has multiple layers - the LCD itself, the digitizer (touch sensor), and a top glass. Each layer is bonded to the next with OCA glue.
+
+When a mobile repair shop gets an iPad with a cracked screen, they basically have two options - replace the whole screen assembly or replace only the glass. The first option is easy but expensive. The second is cheaper (a replacement glass is about $10) but requires skill, some not-so-cheap equipment, and you never get a 100% success rate - there's always a risk of damaging the LCD.
+
+{{{youtube(MJVhQTWFvT8)}}}
+
+It was my first try, and I really messed it up. I watched a few videos and it looked easy. The video above is something I found later - I'll apply those tips on my next attempt.
+
+* Teardown
+
+First, I needed to remove the screen from the iPad. The display glass is glued to the body - nothing unusual for modern devices. To remove it, you can either heat the edges with a hot-air gun or warm up the whole iPad on a hot plate.
+
+I don't have a hot plate this big (only the beloved MHP50 for SMD soldering), but I do have a 3D printer. Heat the bed to about 80 C, wait a bit, and it should be easier to lift the panel once the glue softens.
+
+[[file:3d.jpg][file:3d_thumb.jpg]]
+
+I thought it's a good idea to use X-Acto knife. Spoiler: it don't. I damaged about half of the flex cables during removal - in some areas you must not go deeper than a few millimeters.
+
+[[file:damaged-screen.jpg][file:damaged-screen_thumb.jpg]]
+
+It looked like I only damaged the touch-layer cables, but the screen no longer works. Maybe the cracked glass hit the LCD when I bent the display, or I just bent it too much. Either way, RIP screen.
+
+Anyway, lesson learned. I ordered [[https://aliexpress.com/item/1005008550888416.html][opening
+ picks]] designed for this job that have a depth limiter. For cracked glass, people also recommend adding tape on top so it stays together.
+
+* LCD Separation
+
+Even though this screen is dead, it's still fine to practice LCD separation on it. You don't need expensive equipment - you just need a way to heat the panel to soften the OCA glue and a molybdenum wire. I already had the 3D printer and ordered 0.1 mm wire in advance. Other tools, like a spinning tool to clean up glue after separation, are cheap and useful but not required.
+
+I heated the printer bed again, placed the panel on it for a few minutes, and started. I failed. Then I tried a few more times over the next days and made it worse. 
+
+** Adhesion
+
+One thing I missed about dedicated LCD separation machines is that they don't just have a heated plate and side guides - they also use a vacuum pump. In videos it looks like you need very little force to cut the glue, but that's not true, especially on a 12.9-inch screen. You need enough force that the panel wants to slide around, which makes the job harder and more dangerous - the wire can slip and start cutting the wrong layer.
+
+Mechanical hacks like office or binder clips didn't help. I ended up taping the glass to a spare, damaged PEI printer sheet with double-sided tape, and that's what I plan to do next time as well. Cheap and effective.
+
+** Glass cleaning
+
+I didn't clean the glass edges before starting, so there was leftover glue, glass shards, and even a bit of electronics from the front camera. When the wire hits that, it deflects and either cuts the wrong layer or snaps. It's a must to spend time making the edges perfectly clean and flat.
+
+** Space
+
+An enclosed 3D printer in a corner is not ideal - you need space around it so you can pull the wire smoothly (watch the video above). Next time I'll remove the panels/doors from the printer and move it to the center of the room. 
+
+** Layers
+
+My biggest mistake was not paying attention to the layer stack. As I said, there are three layers - LCD, digitizer, and glass. I wanted to cut between the digitizer and the glass, keeping the digitizer as an extra protective layer since we won't have the top glass anymore.
+
+Because I wasn't careful, I first picked the layer between the LCD and the digitizer. On the next corner I got it right and went between the digitizer and the glass. When I tried to connect those cuts, I ended up slicing the digitizer itself. After a while I had multiple partial cuts in different layers, and it became very hard to continue. 
+
+If you look at the lower-left corner of the photo you can see the bare panel. Above it is the glass with the black border, and to the right is the digitizer with the gold border.
+
+Lesson learned - mark the correct layer before you start. A razor blade should work.
+
+[[file:result.jpg][file:result_thumb.jpg]]
+
+That's what I ended up with - I stopped the separation and kept the stack for spare parts. At least there are plenty of useful connectors.
+
+* Final thoughts
+
+I learned a lot from this attempt, so the next one should go better. I'm now hunting for completely dead screens on eBay - sometimes they show up for around $10, which makes good practice material.
+
+I've already got a few, so the next attempt is coming soon. Wish me luck!

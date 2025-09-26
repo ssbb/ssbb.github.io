@@ -1,0 +1,4 @@
+#+TITLE: Blog
+
+- [2025-09-10 Wed]  [[file:first-attempt-at-ipad-lcd-separation/index.org][First attempt at iPad LCD separation]]
+- [2025-08-26 Tue]  [[file:x61r-intro/index.org][X61R: Thinkpad X61 Revival]]

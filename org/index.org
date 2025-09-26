@@ -1,0 +1,17 @@
+#+TITLE: Sviatoslav Bulbakha
+#+OPTIONS: title:nil
+
+#+begin_profile-pic
+[[./images/me.png]]
+#+end_profile-pic
+
+Hi there!
+
+I'm Sviatoslav Bulbakha (aka ssbb), a functional software developer based in Batumi, Georgia.
+
+I enjoy tweaking Emacs and Linux, designing mechanical keyboards, and soldering tiny things.
+
+#+HTML: <div class="clearfix"></div>
+
+* Recent posts
+#+INCLUDE: "blog/index.org" :only-contents t :lines "3-13"

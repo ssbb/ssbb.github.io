@@ -1,0 +1,77 @@
+#+TITLE: X61R: Thinkpad X61 Revival
+#+DATE: <2025-08-26>
+#+PROJECT: x61r
+
+Old ThinkPads are awesome. I really love the older X series like the X61 - that futuristic design, the classic 7-row keyboard, and that beautiful 4:3 screen aspect ratio. The keyboard is more compact than usual, giving you this perfect display-to-body ratio. And those status LEDs! Seriously, why did manufacturers stop putting status LEDs on laptops? They're incredibly useful (and looks cool!). 
+
+The lack of a touchpad is actually a bonus for me since the ones on older ThinkPads are pretty terrible anyway.
+
+#+CAPTION: Photo by [[https://www.reddit.com/r/thinkpad/comments/1fvq83p/took_a_photo_of_my_fully_upgraded_x61/][u/Gold-Display1584]] on Reddit
+[[./x61.jpeg]]
+
+Of course, it's ancient by today's standards. The X61 came out 18 years ago in 2007. You could probably still use one for basic writing, but if your work involves any serious CPU tasks, you're going to struggle with that dual-core processor. The dial-up modem, ExpressCard slot, and VGA port are basically useless nowadays.
+
+The display looks pretty rough compared to modern screens. Sure, you can upgrade to an SXGA+ (1400x1050) panel from the tablet version, but you're still dealing with nearly 20-year-old display.
+
+And good luck finding genuine batteries - they simply don't exist anymore.
+
+* Available upgrades
+
+I'm hardly unique in my love for old ThinkPads - some people have started creating custom motherboards for them. The most notable projects are probably the X210 (X2100) and X62/X63 from the 51nb team, plus there's the newer X210Ai project by Franck Deng featuring a Core Ultra 9 CPU. The concept is simple: you get a modern motherboard and drop it into an old ThinkPad case with some modifications - additional ventilation holes, removing some internal ribs, that sort of thing. Sounds perfect, right? Well, yes and no. These are passion projects run by small teams, and that comes with its own set of challenges. Search for 51nb saga to get an idea of what I'm talking about.
+
+The X61 doesn't get as much love from the modding community because while you can upgrade the motherboard, you're stuck with the display. The 4:3 ratio is great, but that 17-year-old SXGA+ panel is literally the best you can do. Modern 4:3 displays simply don't exist anymore - laptops started shifting to widescreen formats about 20 years ago.
+
+#+CAPTION: 12.1 inch 4x3 display vs 16x9 widescreen
+[[./4x3vs16x9.png]]
+
+There's another issue with custom motheboards: they're basically stuck with Intel CPUs. CPU manufacturers won't share documentation unless you're a bigcorp with a contract with them. Most of this work happens through reverse engineering, leaked files, and building on previous projects. Switching to something like AMD would mean starting completely from scratch.
+
+On top of all this, we're still dependent on finding original chassis, which gets harder every year. Try finding an X61 in mint condition for any reasonable price - or even an unreasonable one. And what happens when yours eventually breaks?
+
+All these limitations made me rethink the entire approach.
+
+* My plan
+
+** Mainboard
+
+Given all these issues, I figured it would be much better to use some kind of DIY-friendly, off-the-shelf motherboard - think Raspberry Pi but with actual power. The Framework Laptop project immediately came to mind. They offer multiple CPU options (Intel, AMD, even RISC-V), professional support, and most importantly - upgrades! When a new CPU generation drops, you just buy a new motherboard and swap it in. Maybe we'll even see ARM options down the road.
+
+#+CAPTION: Framework 13 Mainboard
+[[./mobo.jpg]]
+
+Obviously, a motherboard designed for the Framework won't just drop into an X61 chassis. The mounting points don't line up, all the port locations are wrong, the RAM upgrade window becomes useless (since the RAM will be on the top side), and the ventilation needs to be completely different. So a custom bottom case is definitely needed.
+
+The one thing we can't change is the keyboard placement. It has its own mounting posts, so the motherboard has to be positioned to avoid conflicts. The only spot that works is way at the back of the chassis. This actually turns out to be good for cooling - we can put the fan in an optimal location back there. The downside is we'd have to eliminate the removable battery compartment. I don't really like losing the ability to carry spare batteries, but I can't see any other way to make it work.
+
+#+CAPTION: Layout I settled on
+[[file:./layout.png][file:./layout_thumb.png]]
+
+Now, which Framework motherboard to choose? Framework's Intel and AMD motherboards aren't identical - they have different USB-C capabilities and use different embedded controller (EC) chips and firmware. I decided to go with AMD first mainly because of the EC firmware. It runs on modern Zephyr RTOS, which I actually have experience with from mechanical keyboards background (who would have thought that would be relevant!). This should make the whole project much more fun to work on.
+
+I'll need to adjust EC firmware to get those status LEDs working. I'm also planning to reuse the original keyboard connector instead of connecting the keyboard via USB with an onboard MCU. We'll see how that goes.
+
+** Display
+Remember how I said there are no modern 4:3 displays? Well, there's actually one exception: iPads. Apple has stuck with 4:3 on iPads since the beginning, making them pretty much the only modern devices with high-resolution 4:3 panels in the size range we need. I've got a 12.9" iPad Pro (3rd gen) myself, and the display quality is absolutely stunning.
+
+[[./ipad.png]]
+
+For this project I chose the 3rd/4th gen specifically because schematics are available - no reverse engineering required. They use eDP interface, which is perfect since Framework motherboards use eDP too. The only catch is they don't include an onboard backlight driver, so I'll need to build that myself.
+
+There's one problem though: the 12.9" panel is still a few millimeters too big for the X61's lid, which was designed for a 12.1" screen. Which brings me to the next challenge...
+
+** Custom chassis
+
+Initially, I thought I'd only need to replace the bottom case and keep everything else stock. But between the iPad display dimensions and the lack of alternatives, it became clear that I'd need to redesign the entire chassis from scratch.
+
+My approach is to reverse engineer each piece one at a time. Start with the bottom case, make sure it works with the stock top case, then design a new top case and verify it works with both the stock and custom bottom pieces, and so on. Once I have all the pieces working, I can adjust the overall dimensions in CAD to accommodate the slightly larger display.
+
+I was really resistant to this idea at first, but I've come around to seeing the advantages. I won't be dependent on finding vintage chassis anymore - I can print new parts today or 20 years from now, as long as I have the CAD files. I'm not locked into original components either. If genuine hinges become impossible to find or I just want better ones, I can modify the design. Want to make a 14" version someday? Easy enough.
+
+Professional 3D printing services (like MJF) and even aluminum CNC machining have become much more accessible to hobbyists, so there are always options to make something really premium.
+
+I'm a bit worried that redesigning everything might make it lose its charm and soul, but we'll see how it goes.
+
+* Final thoughts
+This is definitely a long-term project for me. I'm no expert in CAD or electronics - I know bits and pieces here and there, so I'll be learning as I go. But experience has taught me that you can accomplish pretty much anything if you're motivated enough. It just might take longer when you're learning on the go.
+
+Right now I'm hunting for cheap iPad panels and Framework motherboards while working on the chassis models. I plan to document the entire process here - including all the failures and dead ends. This won't be one of those "look what I built!" posts after a year of silence. You'll get the whole messy, honest story.

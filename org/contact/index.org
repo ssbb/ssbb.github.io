@@ -1,0 +1,3 @@
+#+TITLE: Contact
+
+Please contact me over email [[mailto:mail@ssbb.me][mail@ssbb.me]].
