@@ -44,7 +44,7 @@ Obviously, a motherboard designed for the Framework won't just drop into an X61 
 The one thing we can't change is the keyboard placement. It has its own mounting posts, so the motherboard has to be positioned to avoid conflicts. The only spot that works is way at the back of the chassis. This actually turns out to be good for cooling - we can put the fan in an optimal location back there. The downside is we'd have to eliminate the removable battery compartment. I don't really like losing the ability to carry spare batteries, but I can't see any other way to make it work.
 
 #+CAPTION: Layout I settled on
-[[file:./layout.png][file:./layout_thumb.png]]
+[[file:layout-full.png][file:./layout.png]]
 
 Now, which Framework motherboard to choose? Framework's Intel and AMD motherboards aren't identical - they have different USB-C capabilities and use different embedded controller (EC) chips and firmware. I decided to go with AMD first mainly because of the EC firmware. It runs on modern Zephyr RTOS, which I actually have experience with from mechanical keyboards background (who would have thought that would be relevant!). This should make the whole project much more fun to work on.
 

@@ -22,11 +22,11 @@ First, I needed to remove the screen from the iPad. The display glass is glued t
 
 I don't have a hot plate this big (only the beloved MHP50 for SMD soldering), but I do have a 3D printer. Heat the bed to about 80 C, wait a bit, and it should be easier to lift the panel once the glue softens.
 
-[[file:3d.jpg][file:3d_thumb.jpg]]
+[[file:3d-full.jpg][file:3d.jpg]]
 
 I thought it's a good idea to use X-Acto knife. Spoiler: it don't. I damaged about half of the flex cables during removal - in some areas you must not go deeper than a few millimeters.
 
-[[file:damaged-screen.jpg][file:damaged-screen_thumb.jpg]]
+[[file:damaged-screen-full.jpg][file:damaged-screen.jpg]]
 
 It looked like I only damaged the touch-layer cables, but the screen no longer works. Maybe the cracked glass hit the LCD when I bent the display, or I just bent it too much. Either way, RIP screen.
 
@@ -63,7 +63,7 @@ If you look at the lower-left corner of the photo you can see the bare panel. Ab
 
 Lesson learned - mark the correct layer before you start. A razor blade should work.
 
-[[file:result.jpg][file:result_thumb.jpg]]
+[[file:result-full.jpg][file:result.jpg]]
 
 That's what I ended up with - I stopped the separation and kept the stack for spare parts. At least there are plenty of useful connectors.
 
