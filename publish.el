@@ -14,6 +14,14 @@
 (require 'ox-publish)
 (require 'htmlize)
 
+(setq treesit-language-source-alist
+      '((heex "https://github.com/phoenixframework/tree-sitter-heex.git")
+        (elixir "https://github.com/elixir-lang/tree-sitter-elixir")))
+
+(dolist (lang '(elixir heex))
+  (unless (treesit-language-available-p lang)
+    (treesit-install-language-grammar lang)))
+
 ;; Macros
 (setq org-export-global-macros
       '(("youtube"

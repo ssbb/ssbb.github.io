@@ -1,6 +1,6 @@
 PHONY: all publish publish_no_init
 
-all: publish
+all: publish_no_init
 
 publish: publish.el
 	@echo "Publishing... with current Emacs configurations."
