@@ -103,7 +103,7 @@ Then they can be included on project details page like
                          :html-divs ((preamble "div" "header")
                                      (content "div" "main")
                                      (postamble "div" "footer"))
-                         :htmlized-source t
+                         ;; :htmlized-source t
                          :html-doctype "html5"
                          :html-html5-fancy  t
                          :html-head-include-scripts nil

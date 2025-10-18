@@ -12,9 +12,9 @@ html {
     --color-captions: #6a7282;
     --color-kbd: #101828;
     --color-kbd-shadows: color-mix(in oklab, oklch(21% 0.034 264.665) 10%, transparent);
-    --color-code: #101828;
-    --color-pre-code: #e5e7eb;
-    --color-pre-bg: #1e2939;
+    --color-code: #a0132f;
+    --color-pre-code: #364153;
+    --color-pre-bg: #f8f8f8;
     --color-th-borders: #d1d5dc;
     --color-td-borders: #e5e7eb;
     --color-timestamp: #333;
@@ -240,16 +240,18 @@ body {
      color: var(--color-pre-code);
      background-color: var(--color-pre-bg);
      overflow-x: auto;
-     font-weight: 400;
-     font-size: 0.875em;
+     /* font-weight: 400; */
+     /* font-size: 0.875em; */
      line-height: 1.7142857;
      margin-top: 1.7142857em;
      margin-bottom: 1.7142857em;
-     border-radius: 0.375rem;
+     /* border-radius: 0.375rem; */
      padding-top: 0.8571429em;
      padding-inline-end: 1.1428571em;
      padding-bottom: 0.8571429em;
      padding-inline-start: 1.1428571em;
+     border-top: 3px solid #f0f0f0;
+     border-bottom: 3px solid #f0f0f0;
  }
  pre code {
      background-color: transparent;
