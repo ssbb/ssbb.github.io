@@ -1,0 +1,76 @@
+#+TITLE: Reusable Phoenix LiveView upload component
+#+DATE: <2025-10-16 Thu>
+
+At my work project I have a context for unified asset management handling all the file uploads to S3, proxying images through CDN, image transformation, privacy, etc. The rest of the app reference to this context for everything file-related. Eg user photo field would be something like =belongs_to :photo, Assets.Asset=. Asset struct contains all the info about uploaded file - metadata, transformations like crop and so on.
+
+And what I have been missing for a while is the matching uploader component on the LiveView side. I see it as something like this:
+
+#+begin_src heex-ts
+<.uploader
+  id="user-photo-gallery"
+  value={@photos}
+  max_size={bytes(50, :mb)}
+  max_entries={50}
+  path="user-gallery"
+  public
+  on_change={&send(self(), {:photos_changed, &1})}
+/>
+#+end_src
+
+Then this component handles everything including file upload, cancel and delete, sorting if needed, UI for transformations, etc., and when something changes it just calls the =on_change= callback so I can assign it back to =@photos=.
+
+The issue is that there is no direct way to do it because file input [[https://hexdocs.pm/phoenix_live_view/uploads.html#render-reactive-elements][should]] be rendered within a form with =phx-change= and =phx-submit= matching the process where =allow_upload= has been called.
+
+So we have two options - handle uploads in the parent LiveView while keeping the uploader as a stateless functional component, or add a form directly into the uploader component. But that means we won't be able to use it inside a larger form. The first option is what I have been doing for a while because the second one is not very practical - uploads are usually part of a form.
+
+Recently LiveView v1.1 got released with the much-needed [[https://hexdocs.pm/phoenix_live_view/1.1.14/changelog.html#portal-component][=<.portal />= component]]. I think its main use cases are modals and dropdowns, but it could be helpful for us in this scenario as well.
+
+With the help of the portal we can add a second form inside the uploader component to handle uploads and then teleport the form node somewhere outside of the parent form so they won't conflict. Think about it as a modal - we could render the uploader form inside a modal and move it to the =<body>= tag.
+
+But I am not the one who dictates how the UI should look like, so it still should be inline. That's where the [[https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/form][form]] attribute comes to the rescue. It allows us to explicitly associate form elements with a form even when it's not a direct ancestor of the element. Example from MDN:
+
+#+begin_src html-ts
+<form id="externalForm"></form>
+<form id="internalForm">
+  <label for="username">Username:</label>
+  <input form="externalForm" type="text" name="username" id="username" />
+</form>
+#+end_src
+
+And LiveView handles it perfectly. I use the =form= attribute quite often to handle form buttons which are rendered somewhere outside of the form - in the website header or modal footer, etc.
+
+So I think you get the idea now. We can teleport the =<form>= node somewhere like the =<body>= tag and then link the file input to it.
+
+#+name: uploader_component.ex
+#+begin_src elixir-ts
+defmodule MyAppWeb.UploaderComponent do
+  use MyAppWeb, :live_component
+
+  @impl true
+  def render(assigns) do
+    ~H"""
+    <div>
+      <.portal id={@id <> "-portal"} target="body">
+        <.form phx-change="validate" phx-submit="save" phx-target={@myself} id={@id}>
+        </.form>
+      </.portal>
+  
+      <.live_file_input upload={@uploads.avatar} form={@id} />
+    </div>
+    """
+  end
+  
+  @impl true
+  def update(assigns, socket) do
+    {:ok, allow_upload(socket, :avatar, max_entries: 1, auto_upload: true, ...)}
+  end
+  
+  @impl true
+  def handle_event("validate", _params, socket), do: {:noreply, socket}
+  
+  @impl true
+  def handle_event("submit", _params, socket), do: {:noreply, socket}
+end
+#+end_src
+
+Now you can safely render it within the parent form.
