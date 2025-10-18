@@ -16,9 +16,10 @@
 
 (setq treesit-language-source-alist
       '((heex "https://github.com/phoenixframework/tree-sitter-heex.git")
-        (elixir "https://github.com/elixir-lang/tree-sitter-elixir")))
+        (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
+        (html "https://github.com/tree-sitter/tree-sitter-html")))
 
-(dolist (lang '(elixir heex))
+(dolist (lang '(elixir heex html))
   (unless (treesit-language-available-p lang)
     (treesit-install-language-grammar lang)))
 
