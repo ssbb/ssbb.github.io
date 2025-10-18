@@ -1,3 +1,6 @@
 public/
 *.elc
 .org-timestamps/
+
+org/blog/posts-by-project.inc.org
+org/blog/index.org
