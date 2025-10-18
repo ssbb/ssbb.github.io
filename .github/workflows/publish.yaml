@@ -16,6 +16,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Setup TS
+        uses: tree-sitter/setup-action@v2
+        with:
+          install-lib: true
+
       - name: Setup Emacs
         uses: purcell/setup-emacs@master
         with:
