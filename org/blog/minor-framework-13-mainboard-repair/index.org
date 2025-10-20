@@ -1,0 +1,20 @@
+#+TITLE: Minor Framework 13 mainboard repair
+#+PROJECT: x61r
+#+DATE: <2025-10-19 Sun>
+
+I recently spotted a Framework 13 with an i5-1135G7 on eBay for $100. The listing said it had a broken screen and a dead mainboard. Without thinking too much, I ordered it right away. A dead board could still be handy for fitment testing, and having the rest of the laptop would be useful too - I'd need at least the eDP cable and battery, maybe the webcam module as well. It's also nice having all the original cables around so I don't have to build custom ones during testing. For example, I could easily break out the EC port using the Input Cover cable.
+
+When it arrived, I confirmed it really didn't work - no signs of boot at all. Then I noticed three blown (and shorted) capacitors on the mainboard.
+
+#+CAPTION: Blown capacitors. Two others are above the obvious one.
+[[file:caps_full.jpg][file:caps.jpg]]
+
+Obviously, there was no way to know the original capacitor values once they'd blown. Maybe Framework support could help with that? I figured they wouldn't share the full schematic, but I hoped they might reveal the values for a few specific capacitors. I reached out to them, but they said they couldn't help with repairs. Instead, they suggested going through a local repair shop, which would then need to sign an NDA to get access to the schematics. Huh.
+
+So I desoldered the damaged capacitors, and the board actually started showing signs of life - the status LEDs began blinking. I confirmed those capacitors were connected between =GND= and the =+17.6V= rail. They were probably just for power filtering, so something around =10uF= made sense. The best I had on hand were =1uF= capacitors rated for =50V=, so I used those.
+
+And... it worked!
+
+[[file:framework_full.jpg][file:framework.jpg]]
+
+The screen is indeed damaged, but it's still good enough to reach the BIOS and enable standalone mode.

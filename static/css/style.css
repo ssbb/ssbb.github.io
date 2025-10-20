@@ -207,12 +207,12 @@ body {
      font-weight: 600;
      font-size: 0.875em;
  }
- code::before {
-     content: "`";
- }
- code::after {
-     content: "`";
- }
+ /* code::before { */
+ /*     content: "`"; */
+ /* } */
+ /* code::after { */
+ /*     content: "`"; */
+ /* } */
  a code {
      color: inherit;
  }
